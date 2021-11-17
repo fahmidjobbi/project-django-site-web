@@ -1,0 +1,28 @@
+{% extends 'bootstrap5/bootstrap5.html' %}
+
+{% load bootstrap5 %}
+
+
+{% block bootstrap5_content %}
+
+<ul class="nav justify-content-center|justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'cart' %}">card</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'checkout' %}">checkout</a>
+    </li>
+</ul>
+
+<div class="container">
+    <h1>{% block title %}{% endblock %}</h1>
+
+    {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+    {% block content %}(no content){% endblock %}
+</div>
+
+{% endblock %}

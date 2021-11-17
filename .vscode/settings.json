@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "ecommerce_conn",
+            "database": "${workspaceFolder:project django site web}/db.sqlite3"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
