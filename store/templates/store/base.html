@@ -1,22 +1,61 @@
 {% extends 'bootstrap5/bootstrap5.html' %}
+{% load fontawesome_5 %}
 
 {% load bootstrap5 %}
+{% load static %}
 
+
+{% if 'javascript_in_head'|bootstrap_setting %}
+{% bootstrap_javascript %}
+{% endif %}
+{% block bootstrap5_extra_head %}
+{% fontawesome_5_static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+{% endblock %}
 
 {% block bootstrap5_content %}
 
-<ul class="nav justify-content-center|justify-content-end">
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'cart' %}">card</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'checkout' %}">checkout</a>
-    </li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-dark m-2 rounded-pill  px-4">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">home</a>
 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'checkout' %}">checkout</a>
+
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Action 1</a>
+                    <a class="dropdown-item" href="#">Action 2</a>
+                </div>
+            </li>
+        </ul>
+        <div class="d-flex my-2 my-lg-0">
+
+            <button type="button" class="btn btn-outline-light rounded-circle position-relative mx-3 h-75">
+                {% fa5_icon 'shopping-cart' 'fas' %}
+
+                <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-warning">
+                    99+
+                    <span class="visually-hidden">card content</span>
+                </span>
+            </button>
+            <input type="text" class="form-control me-sm-2 rounded-pill" placeholder="Search"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+
+        </div>
+    </div>
+</nav>
 <div class="container">
     <h1>{% block title %}{% endblock %}</h1>
 
