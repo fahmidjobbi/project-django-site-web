@@ -49,7 +49,7 @@ class Customer(models.Model):
         
     
     def __str__(self):
-        return self.name
+        return self.name +"--------"+ self.email 
 
 
 
@@ -59,6 +59,7 @@ class Product(models.Model):
     price=models.IntegerField()
     digital=models.BooleanField(default=True,null=True,blank=False)
     category=models.ForeignKey(Category,on_delete=models.CASCADE,null=True,blank=True)
+    
     
     
     class Meta:
@@ -83,3 +84,16 @@ class Order(models.Model):
     
     def __str__(self):
         return str(self.id)
+
+
+class ShippingAdress(models.Model):
+        customer=models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
+        order=models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
+        adress=models.CharField(max_length=200,null=False)
+        city=models.CharField(max_length=200,null=False)
+        state=models.CharField(max_length=200,null=False)
+        zipcode=models.CharField(max_length=200,null=False)
+        date_added=models.DateTimeField(auto_now_add=True)
+        
+        
+                                

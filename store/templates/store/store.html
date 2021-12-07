@@ -4,14 +4,36 @@
 {% load static %}
 {% block content %}
 
-  <div class="jumbotron">
-      <h1 class="display-3">Jumbo heading</h1>
-      <p class="lead">Jumbo helper text</p>
-      <hr class="my-2">
-      <p>More info</p>
-      <p class="lead">
-          <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-      </p>
+
+<div class="jumbotron bg-white shadow-sm offset-2 py-2 px-5">
+  <h1 class="display-3">Djobbi Shop</h1>
+  <p class="lead">Jumbo helper text</p>
+  <hr class="my-2">
+  <p>More info</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+  </p>
+
+</div>
+
+<div class="row justify-content-center offset-2">
+  {% for product in products_list %}
+  <div class="col-lg-3 m-3 ">
+    <img class="thumbnail w-100 h-75"  src="{% static 'images/placeholder.png' %}">
+    <div class="box-element product">
+      <h6><strong>{{product.name}}</strong></h6>
+      <hr>
+
+      <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+      <a class="btn btn-outline-success" href="#">View</a>
+      <h4 style="display: inline-block; float: none "><strong>{{product.price}}</strong></h4>
+
+    </div>
   </div>
+  {% endfor %}
+
+</div>
+
+
 
 {% endblock content %}
