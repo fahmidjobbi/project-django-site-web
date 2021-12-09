@@ -18,15 +18,16 @@
 
 <div class="row justify-content-center offset-2">
   {% for product in products_list %}
-  <div class="col-lg-3 m-3 ">
-    <img class="thumbnail w-100 h-75"  src="{% static 'images/placeholder.png' %}">
+  <div class="col-lg-3 m-4 ">
+    <img class="thumbnail w-100 h-75 "  src="/static/images{{product.imageURL}}">
     <div class="box-element product">
       <h6><strong>{{product.name}}</strong></h6>
       <hr>
+      
 
-      <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+      <button data-product= {{product.id}} data-action="add"  class="btn btn-outline-secondary add-btn update-cart" >Add to Cart</button>
       <a class="btn btn-outline-success" href="#">View</a>
-      <h4 style="display: inline-block; float: none "><strong>{{product.price}}</strong></h4>
+      <h4 style="display: inline-block; float: none "><strong>{{product.price}}$</strong></h4>
 
     </div>
   </div>

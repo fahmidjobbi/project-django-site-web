@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse
 from django.urls import path
-from store.views import AboutPageView, CheckoutView, HomePageView, RegisterView
-
+from store.views import   HomePageView, RegisterView
+from . import views
 
 
 
@@ -13,10 +13,11 @@ from store.views import AboutPageView, CheckoutView, HomePageView, RegisterView
 
 
 urlpatterns = [
-    path('cart/', AboutPageView.as_view() , name='cart'),
-    path('checkout/', CheckoutView.as_view() , name='checkout'),
+    path('cart/', views.cart, name='cart'),
+    path('checkout/', views.checkout , name='checkout'),
     path('', HomePageView.as_view() , name="home"),
     path('register/', RegisterView.as_view() , name="register"),
+    path('update_item/', views.updateItem , name="update_item"),
    
 ]    
     
