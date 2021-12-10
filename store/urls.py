@@ -18,6 +18,7 @@ urlpatterns = [
     path('',views.home  , name="home"),
     path('register/', RegisterView.as_view() , name="register"),
     path('update_item/', views.updateItem , name="update_item"),
+    path('process_order/', views.processOrder , name="process_order"),
    
 ]    
     
