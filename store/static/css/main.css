@@ -6,3 +6,8 @@ nav {
 
     background-image:linear-gradient(to right,#133B5C,teal);
     }
+
+
+    .hidden {
+        display: none;
+    }
