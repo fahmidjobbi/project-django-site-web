@@ -29,6 +29,24 @@
         return cookieValue;
     }
     const csrftoken = getToken('csrftoken');
+
+    function getCookie(name) {
+        var cookieArr = document.cookie.split(';');
+        for (var i=0 ; i < cookieArr.length; i++) {
+            var cookiePair = cookieArr[i].split('=')
+            if (name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
+    var cart = JSON.parse(getCookie('cart'))
+    console.log('cart:', cart)
+    if (cart == undefined) {
+        cart = {}
+        console.log('cart was created')
+        document.cookie='cart='+JSON.stringify(cart)+";domain;path=/"
+    }
 </script>
 {% fontawesome_5_static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
@@ -70,20 +88,21 @@
         </ul>
         <div class="d-flex my-2 my-lg-0">
 
-            <a type="button" href="{% url 'cart' %}" class="btn btn-outline-light rounded-circle position-relative mx-3 h-75" >
+            <a type="button" href="{% url 'cart' %}"
+                class="btn btn-outline-light rounded-circle position-relative mx-3 h-75">
                 {% fa5_icon 'shopping-cart' 'fas' %}
 
-                <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-warning" >
+                <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-warning">
                     {{cartItems}}
                     <span class="visually-hidden">card content</span>
                 </span>
             </a>
             <button type="button" class="btn btn-outline-light rounded-circle position-relative  mx-2 h-75 "
                 aria-hidden="true">
-                {% fa5_icon " fa-sign-in-alt"  %}
-            </button>  
+                {% fa5_icon " fa-sign-in-alt" %}
+            </button>
 
-           
+
 
             <input type="text" class="form-control me-sm-2 rounded-pill" placeholder="Search"
                 aria-label="Recipient's username" aria-describedby="basic-addon2">
